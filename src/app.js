@@ -17,7 +17,7 @@ const AGE_HOURS = [
 const TAG_GROUPS = {
   post: ['學習紀錄', 'Prompt', '工作流', '筆記', 'AI 生活', '工具'],
   question: ['卡關', '模型選擇', '作業', '方法論', '除錯', '討論'],
-  work: ['小作品', '原型', '自動化', '互動頁', '視覺化', 'Demo'],
+  work: ['里程碑', '原型', '自動化', '互動頁', '視覺化', 'Demo'],
 };
 
 const POST_TITLES = [
@@ -60,7 +60,7 @@ const QUESTION_TITLES = [
   '想讓 AI 幫我改寫，但怕失去自己的語氣',
   '要怎麼把一份長文章變成可追蹤任務？',
   '不同模型的輸出風格差異要怎麼記錄？',
-  '請問小作品需要做到能上線嗎？',
+  '請問里程碑需要做到能上線嗎？',
   '如何避免 AI 幫我補不存在的資料？',
   '大家的 prompt 版本都放在哪裡？',
   '一週只有兩小時，怎麼安排練習最有效？',
@@ -75,30 +75,30 @@ const QUESTION_TITLES = [
 ];
 
 const WORK_TITLES = [
-  '小作品：每日任務自動整理板',
-  '小作品：AI 閱讀卡片產生器',
-  '小作品：課程心得互動牆',
-  '小作品：Prompt 版本比較器',
-  '小作品：會議後續任務拆解器',
-  '小作品：學習進度小儀表板',
-  '小作品：資料清理前後對照頁',
-  '小作品：Notion 摘要小幫手',
-  '小作品：提問品質檢查器',
-  '小作品：影片重點時間軸',
-  '小作品：AI 回答驗證清單',
-  '小作品：個人語氣轉換器',
-  '小作品：錯題反思小卡',
-  '小作品：社群問題分類器',
-  '小作品：課程推薦問答流程',
-  '小作品：作品靈感抽卡機',
-  '小作品：文件摘要差異檢查',
-  '小作品：學習週報產生器',
-  '小作品：專案資料入口頁',
-  '小作品：簡報大綱整理器',
-  '小作品：客服語氣練習器',
-  '小作品：行動前檢查表',
-  '小作品：概念地圖速寫',
-  '小作品：AI 任務委派面板',
+  '里程碑：每日任務自動整理板',
+  '里程碑：AI 閱讀卡片產生器',
+  '里程碑：課程心得互動牆',
+  '里程碑：Prompt 版本比較器',
+  '里程碑：會議後續任務拆解器',
+  '里程碑：學習進度小儀表板',
+  '里程碑：資料清理前後對照頁',
+  '里程碑：Notion 摘要小幫手',
+  '里程碑：提問品質檢查器',
+  '里程碑：影片重點時間軸',
+  '里程碑：AI 回答驗證清單',
+  '里程碑：個人語氣轉換器',
+  '里程碑：錯題反思小卡',
+  '里程碑：社群問題分類器',
+  '里程碑：課程推薦問答流程',
+  '里程碑：作品靈感抽卡機',
+  '里程碑：文件摘要差異檢查',
+  '里程碑：學習週報產生器',
+  '里程碑：專案資料入口頁',
+  '里程碑：簡報大綱整理器',
+  '里程碑：客服語氣練習器',
+  '里程碑：行動前檢查表',
+  '里程碑：概念地圖速寫',
+  '里程碑：AI 任務委派面板',
 ];
 
 const CONTENT_BY_TYPE = {
@@ -138,7 +138,7 @@ const TYPE_META = {
     composerDesc: '把卡住的地方丟出來',
   },
   work: {
-    label: '小作品',
+    label: '里程碑',
     icon: iconSparkles,
     chip: 'type-work',
     dot: 'dot-work',
@@ -150,7 +150,7 @@ const TYPE_OPTIONS = [
   ['all', '全部', iconMessage],
   ['post', '貼文', iconDocument],
   ['question', '問問題', iconQuestion],
-  ['work', '小作品', iconSparkles],
+  ['work', '里程碑', iconSparkles],
 ];
 
 const TIME_OPTIONS = [
@@ -365,7 +365,7 @@ function renderComposerPrompt() {
         <button class="composer-button" type="button" data-action="open-composer">
           <span>想分享點什麼？</span>
         </button>
-        <button class="round-button" type="button" data-action="open-composer" aria-label="分享小作品圖片">
+        <button class="round-button" type="button" data-action="open-composer" aria-label="分享里程碑圖片">
           ${iconImage('icon-md')}
         </button>
       </div>
@@ -541,7 +541,7 @@ function renderSidebar() {
       </section>
 
       <section class="side-card">
-        <h3>${iconSparkles('icon-sm text-emerald')}小作品焦點</h3>
+        <h3>${iconSparkles('icon-sm text-emerald')}里程碑焦點</h3>
         <div class="top-works">
           ${topWorks
             .map(
@@ -573,7 +573,7 @@ function renderComposerModal() {
   const selected = TYPE_META[state.composerType];
   const placeholder =
     state.composerType === 'work'
-      ? '貼上作品連結、截圖說明，或描述這個小作品想驗證什麼。'
+      ? '貼上作品連結、截圖說明，或描述這個里程碑想驗證什麼。'
       : state.composerType === 'question'
         ? '描述你卡住的地方、試過什麼、希望大家幫你看哪一段。'
         : '寫下你的觀察、流程、心得或想分享的素材。';
@@ -600,9 +600,9 @@ function renderComposerModal() {
                 const workHelp =
                   type === 'work'
                     ? `<div class="work-help-wrap">
-                        <button class="work-help-button" type="button" data-action="open-video" aria-label="什麼是小作品？">
+                        <button class="work-help-button" type="button" data-action="open-video" aria-label="什麼是里程碑？">
                           ${iconQuestion('icon-sm')}
-                          <span>什麼是小作品？</span>
+                          <span>什麼是里程碑？</span>
                         </button>
                       </div>`
                     : '';
@@ -649,8 +649,8 @@ function renderVideoModal() {
       <section class="video-modal" data-modal-panel>
         <div class="modal-header">
           <div>
-            <h2 id="work-video-title">什麼是小作品？</h2>
-            <p>nuva 小作品說明影片</p>
+            <h2 id="work-video-title">什麼是里程碑？</h2>
+            <p>nuva 里程碑說明影片</p>
           </div>
           <button class="round-button" type="button" data-action="close-video" aria-label="關閉影片">
             ${iconX('icon-sm')}
@@ -659,7 +659,7 @@ function renderVideoModal() {
         <div class="video-frame">
           <iframe
             src="${YOUTUBE_EMBED_URL}"
-            title="什麼是小作品？"
+            title="什麼是里程碑？"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen
           ></iframe>
