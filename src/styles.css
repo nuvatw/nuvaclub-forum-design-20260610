@@ -420,7 +420,7 @@ svg {
   background: #a78bfa;
 }
 
-.dot-work {
+.dot-milestone {
   background: #34d399;
 }
 
@@ -458,7 +458,7 @@ svg {
   color: #c4b5fd;
 }
 
-.type-work {
+.type-milestone {
   border: 1px solid rgba(16, 185, 129, 0.22);
   background: rgba(16, 185, 129, 0.1);
   color: #6ee7b7;
@@ -499,7 +499,7 @@ svg {
   -webkit-line-clamp: 3;
 }
 
-.work-preview {
+.milestone-preview {
   display: flex;
   min-height: 112px;
   align-items: flex-end;
@@ -644,19 +644,19 @@ svg {
   font-size: 10px;
 }
 
-.top-works {
+.top-milestones {
   display: grid;
   gap: 12px;
 }
 
-.top-work {
+.top-milestone {
   border: 1px solid var(--line);
   border-radius: 12px;
   background: rgba(10, 10, 10, 0.5);
   padding: 12px;
 }
 
-.top-work p {
+.top-milestone p {
   display: -webkit-box;
   margin: 0;
   overflow: hidden;
@@ -668,7 +668,7 @@ svg {
   -webkit-line-clamp: 2;
 }
 
-.top-work div {
+.top-milestone div {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -677,7 +677,7 @@ svg {
   font-size: 12px;
 }
 
-.top-work span {
+.top-milestone span {
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -836,13 +836,13 @@ svg {
   line-height: 1.65;
 }
 
-.work-help-wrap {
+.milestone-help-wrap {
   position: absolute;
   right: 8px;
   top: 8px;
 }
 
-.work-help-button {
+.milestone-help-button {
   position: relative;
   display: grid;
   width: 32px;
@@ -857,13 +857,13 @@ svg {
     color 160ms ease;
 }
 
-.work-help-button:hover,
-.work-help-button:focus-visible {
+.milestone-help-button:hover,
+.milestone-help-button:focus-visible {
   background: #171717;
   color: var(--emerald);
 }
 
-.work-help-button span {
+.milestone-help-button span {
   position: absolute;
   right: 0;
   bottom: calc(100% + 8px);
@@ -882,8 +882,8 @@ svg {
   z-index: 20;
 }
 
-.work-help-button:hover span,
-.work-help-button:focus-visible span {
+.milestone-help-button:hover span,
+.milestone-help-button:focus-visible span {
   opacity: 1;
 }
 

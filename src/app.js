@@ -17,7 +17,7 @@ const AGE_HOURS = [
 const TAG_GROUPS = {
   post: ['學習紀錄', 'Prompt', '工作流', '筆記', 'AI 生活', '工具'],
   question: ['卡關', '模型選擇', '作業', '方法論', '除錯', '討論'],
-  work: ['里程碑', '原型', '自動化', '互動頁', '視覺化', 'Demo'],
+  milestone: ['里程碑', '原型', '自動化', '互動頁', '視覺化', 'Demo'],
 };
 
 const POST_TITLES = [
@@ -40,7 +40,7 @@ const POST_TITLES = [
   '一個週末整理完課程資料的流程',
   '把複雜任務拆成角色與資料兩條線',
   '分享我的 AI 學習日誌格式',
-  '用回顧問題把作品變得更具體',
+  '用回顧問題把里程碑變得更具體',
   '如何讓同一個 prompt 支援不同情境',
   '我把測驗錯題整理成下一次練習題',
   '今天的模型比較筆記',
@@ -50,13 +50,13 @@ const POST_TITLES = [
 const QUESTION_TITLES = [
   '同一題問三次答案都不同，大家怎麼穩定輸出？',
   '請問要怎麼判斷 prompt 是太短還是資料不足？',
-  '做作品時卡在資料整理，有推薦的起手式嗎？',
+  '做里程碑時卡在資料整理，有推薦的起手式嗎？',
   '如果 AI 一直誤解角色設定，要先改哪裡？',
   '想做一個課程摘要工具，資料格式要怎麼設計？',
   '大家會把 system prompt 寫到多細？',
   '模型回答很漂亮但不精準，怎麼驗證比較快？',
   '做互動頁時，要先畫流程還是先寫內容？',
-  '有沒有適合初學者的作品發想方法？',
+  '有沒有適合初學者的里程碑發想方法？',
   '想讓 AI 幫我改寫，但怕失去自己的語氣',
   '要怎麼把一份長文章變成可追蹤任務？',
   '不同模型的輸出風格差異要怎麼記錄？',
@@ -64,7 +64,7 @@ const QUESTION_TITLES = [
   '如何避免 AI 幫我補不存在的資料？',
   '大家的 prompt 版本都放在哪裡？',
   '一週只有兩小時，怎麼安排練習最有效？',
-  '想做作品集，但不知道第一個案例選什麼',
+  '想整理學習案例，但不知道第一個主題選什麼',
   'AI 協作時，什麼時候該停下來自己判斷？',
   '如何請 AI 幫忙 review 自己的想法？',
   '輸入資料太亂，AI 回答也亂，怎麼救？',
@@ -74,7 +74,7 @@ const QUESTION_TITLES = [
   '想練習拆需求，有沒有推薦題目？',
 ];
 
-const WORK_TITLES = [
+const MILESTONE_TITLES = [
   '里程碑：每日任務自動整理板',
   '里程碑：AI 閱讀卡片產生器',
   '里程碑：課程心得互動牆',
@@ -90,7 +90,7 @@ const WORK_TITLES = [
   '里程碑：錯題反思小卡',
   '里程碑：社群問題分類器',
   '里程碑：課程推薦問答流程',
-  '里程碑：作品靈感抽卡機',
+  '里程碑：靈感抽卡機',
   '里程碑：文件摘要差異檢查',
   '里程碑：學習週報產生器',
   '里程碑：專案資料入口頁',
@@ -114,9 +114,9 @@ const CONTENT_BY_TYPE = {
     '如果目標是做一個可以分享的小成果，大家會把範圍切到多小？',
     '我想避免答案看起來合理但其實沒有根據，大家會怎麼設計驗證步驟？',
   ],
-  work: [
-    '這是一個可以在一天內完成的小 prototype，重點是把想法做成可以被看見的版本。',
-    '我把輸入、處理、輸出放在同一頁，讓朋友試用時比較知道該怎麼給回饋。',
+  milestone: [
+    '這是一個可以在一天內完成的里程碑，重點是把想法做成可以被看見的版本。',
+    '我把輸入、處理、輸出放在同一頁，讓同學試用時比較知道該怎麼給回饋。',
     '目前先做出核心互動，後面想再補資料匯出和範例模板。',
     '這版刻意保持很小，只驗證一個流程是不是值得繼續做。',
   ],
@@ -137,12 +137,12 @@ const TYPE_META = {
     dot: 'dot-question',
     composerDesc: '把卡住的地方丟出來',
   },
-  work: {
+  milestone: {
     label: '里程碑',
     icon: iconSparkles,
-    chip: 'type-work',
-    dot: 'dot-work',
-    composerDesc: '放上 prototype 或練習成果',
+    chip: 'type-milestone',
+    dot: 'dot-milestone',
+    composerDesc: '記錄 prototype 或練習成果',
   },
 };
 
@@ -150,7 +150,7 @@ const TYPE_OPTIONS = [
   ['all', '全部', iconMessage],
   ['post', '貼文', iconDocument],
   ['question', '問問題', iconQuestion],
-  ['work', '里程碑', iconSparkles],
+  ['milestone', '里程碑', iconSparkles],
 ];
 
 const TIME_OPTIONS = [
@@ -180,7 +180,7 @@ const state = {
   videoOpen: false,
 };
 
-const MOCK_FORUM_POSTS = ['post', 'question', 'work'].flatMap((type) =>
+const MOCK_FORUM_POSTS = ['post', 'question', 'milestone'].flatMap((type) =>
   getTitlesForType(type).map((_, index) => createPost(type, index))
 );
 
@@ -281,7 +281,7 @@ function iconX(className = '') {
 
 function getTitlesForType(type) {
   if (type === 'question') return QUESTION_TITLES;
-  if (type === 'work') return WORK_TITLES;
+  if (type === 'milestone') return MILESTONE_TITLES;
   return POST_TITLES;
 }
 
@@ -302,7 +302,7 @@ function createPost(type, index) {
     hearts: 18 + ((index * 17 + typeSeed * 13) % 214),
     comments: 2 + ((index * 5 + typeSeed) % 36),
     views: 120 + ((index * 97 + typeSeed * 31) % 2200),
-    previewTone: type === 'work' ? PREVIEW_TONES[index % PREVIEW_TONES.length] : undefined,
+    previewTone: type === 'milestone' ? PREVIEW_TONES[index % PREVIEW_TONES.length] : undefined,
   };
 }
 
@@ -365,7 +365,7 @@ function renderComposerPrompt() {
         <button class="composer-button" type="button" data-action="open-composer">
           <span>想分享點什麼？</span>
         </button>
-        <button class="round-button" type="button" data-action="open-composer" aria-label="分享里程碑圖片">
+        <button class="round-button" type="button" data-action="open-composer" aria-label="分享里程碑截圖">
           ${iconImage('icon-md')}
         </button>
       </div>
@@ -445,10 +445,10 @@ function renderToolbar() {
   `;
 }
 
-function renderWorkPreview(post) {
-  if (post.type !== 'work') return '';
+function renderMilestonePreview(post) {
+  if (post.type !== 'milestone') return '';
   return `
-    <div class="work-preview tone-${post.previewTone}">
+    <div class="milestone-preview tone-${post.previewTone}">
       <div class="preview-chip">
         <span>Prototype preview</span>
         <span>${iconPlay('icon-xs')}Demo</span>
@@ -490,7 +490,7 @@ function renderPostCard(post) {
         <h3>${escapeHtml(post.title)}</h3>
         <p>${escapeHtml(post.content)}</p>
 
-        ${renderWorkPreview(post)}
+        ${renderMilestonePreview(post)}
 
         <div class="action-row">
           <button type="button" aria-label="${escapeHtml(post.title)} 的愛心數 ${post.hearts}">
@@ -509,7 +509,7 @@ function renderPostCard(post) {
 }
 
 function renderSidebar() {
-  const topWorks = MOCK_FORUM_POSTS.filter((post) => post.type === 'work')
+  const topMilestones = MOCK_FORUM_POSTS.filter((post) => post.type === 'milestone')
     .sort((a, b) => b.hearts - a.hearts)
     .slice(0, 3);
   const tagCounts = MOCK_FORUM_POSTS.reduce((acc, post) => {
@@ -542,11 +542,11 @@ function renderSidebar() {
 
       <section class="side-card">
         <h3>${iconSparkles('icon-sm text-emerald')}里程碑焦點</h3>
-        <div class="top-works">
-          ${topWorks
+        <div class="top-milestones">
+          ${topMilestones
             .map(
               (post) => `
-                <div class="top-work">
+                <div class="top-milestone">
                   <p>${escapeHtml(post.title)}</p>
                   <div>
                     <span>${iconHeart('icon-xs')}${post.hearts}</span>
@@ -572,8 +572,8 @@ function renderComposerModal() {
   if (!state.composerOpen) return '';
   const selected = TYPE_META[state.composerType];
   const placeholder =
-    state.composerType === 'work'
-      ? '貼上作品連結、截圖說明，或描述這個里程碑想驗證什麼。'
+    state.composerType === 'milestone'
+      ? '貼上連結、截圖說明，或描述這個里程碑想驗證什麼。'
       : state.composerType === 'question'
         ? '描述你卡住的地方、試過什麼、希望大家幫你看哪一段。'
         : '寫下你的觀察、流程、心得或想分享的素材。';
@@ -593,14 +593,14 @@ function renderComposerModal() {
 
         <div class="modal-content">
           <div class="composer-type-grid">
-            ${['post', 'question', 'work']
+            ${['post', 'question', 'milestone']
               .map((type) => {
                 const meta = TYPE_META[type];
                 const selectedClass = state.composerType === type ? ' selected' : '';
-                const workHelp =
-                  type === 'work'
-                    ? `<div class="work-help-wrap">
-                        <button class="work-help-button" type="button" data-action="open-video" aria-label="什麼是里程碑？">
+                const milestoneHelp =
+                  type === 'milestone'
+                    ? `<div class="milestone-help-wrap">
+                        <button class="milestone-help-button" type="button" data-action="open-video" aria-label="什麼是里程碑？">
                           ${iconQuestion('icon-sm')}
                           <span>什麼是里程碑？</span>
                         </button>
@@ -615,7 +615,7 @@ function renderComposerModal() {
                         <small>${meta.composerDesc}</small>
                       </span>
                     </button>
-                    ${workHelp}
+                    ${milestoneHelp}
                   </div>
                 `;
               })
@@ -645,11 +645,11 @@ function renderComposerModal() {
 function renderVideoModal() {
   if (!state.videoOpen) return '';
   return `
-    <div class="modal-backdrop video" role="dialog" aria-modal="true" aria-labelledby="work-video-title" data-action="close-video">
+    <div class="modal-backdrop video" role="dialog" aria-modal="true" aria-labelledby="milestone-video-title" data-action="close-video">
       <section class="video-modal" data-modal-panel>
         <div class="modal-header">
           <div>
-            <h2 id="work-video-title">什麼是里程碑？</h2>
+            <h2 id="milestone-video-title">什麼是里程碑？</h2>
             <p>nuva 里程碑說明影片</p>
           </div>
           <button class="round-button" type="button" data-action="close-video" aria-label="關閉影片">
@@ -660,7 +660,7 @@ function renderVideoModal() {
           <iframe
             src="${YOUTUBE_EMBED_URL}"
             title="什麼是里程碑？"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; compute-pressure"
             allowfullscreen
           ></iframe>
         </div>
