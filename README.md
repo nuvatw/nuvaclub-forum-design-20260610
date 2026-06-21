@@ -5,7 +5,7 @@ writing posts, asking questions, and publishing milestones.
 
 ## Features
 
-- 72 mock forum entries: 24 `貼文`, 24 `問問題`, 24 `里程碑`
+- 72 mock forum entries: 24 `寫貼文`, 24 `問問題`, 24 `里程碑`
 - Composer flow for the three forum entry types
 - `里程碑` question mark tooltip: `什麼是里程碑？`
 - Clickable video popup for `https://www.youtube.com/watch?v=aG0ku2xCMgo`
@@ -14,7 +14,7 @@ writing posts, asking questions, and publishing milestones.
 
 ## Scenario Scope
 
-- `貼文`: lightweight sharing for learning notes, AI flows, links, and observations.
+- `寫貼文`: lightweight sharing for learning notes, AI flows, links, and observations.
 - `問問題`: structured help requests for course questions or AI system-building blockers.
 - `里程碑`: visible proof of a prototype, practice result, or learning checkpoint.
 

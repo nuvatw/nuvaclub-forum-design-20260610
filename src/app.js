@@ -124,7 +124,7 @@ const CONTENT_BY_TYPE = {
 
 const TYPE_META = {
   post: {
-    label: '貼文',
+    label: '寫貼文',
     icon: iconDocument,
     chip: 'type-post',
     dot: 'dot-post',
@@ -148,7 +148,7 @@ const TYPE_META = {
 
 const TYPE_OPTIONS = [
   ['all', '全部', iconMessage],
-  ['post', '貼文', iconDocument],
+  ['post', '寫貼文', iconDocument],
   ['question', '問問題', iconQuestion],
   ['milestone', '里程碑', iconSparkles],
 ];
@@ -391,7 +391,7 @@ function renderToolbar() {
             type="search"
             id="search-posts"
             value="${escapeHtml(state.searchTerm)}"
-            placeholder="搜尋 mock 貼文"
+            placeholder="搜尋 mock 內容"
           />
         </label>
 
